@@ -31,5 +31,14 @@ const createBook = async (bookToSave) => {
         throw err;
     }
 };
+
+//Update Book
+const updateBook = async (id, bookToUpdate) => {
+    try {
+        await Books.findByIdAndUpdate(id, bookToUpdate);
+    } catch (err) {
+        throw { status: 400, msg: err };
+    }
+};
 //export all our functions
-module.exports = {findAllBooks, findBookById, createBook};
+module.exports = {findAllBooks, findBookById, createBook, updateBook};

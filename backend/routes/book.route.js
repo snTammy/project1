@@ -3,7 +3,7 @@ const router = require('express').Router();
 const mongoose = require('mongoose');
 
 //import controller functions
-const { findAllBooks, findBookById, createBook } = require('../controllers/book.controller.js');
+const { findAllBooks, findBookById, createBook, updateBook } = require('../controllers/book.controller.js');
 
 // Validate ObjectId middleware
 const validateObjectId = (req, res, next) => {
@@ -44,7 +44,15 @@ router.post('/', async (req, res) => {
 });
 
 //Update a Book
-
+router.put('/:id', validateObjectId, async (req, res) => {
+    try {
+        // For PUT requests, the data to update comes via the request body
+        await updateBook(req.params.id, req.body);
+        res.send();
+    } catch (err) {
+        res.status(err?.status ?? 500).json(err);
+    }
+});
 
 //Delete a Book
 
