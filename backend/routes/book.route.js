@@ -3,7 +3,7 @@ const router = require('express').Router();
 const mongoose = require('mongoose');
 
 //import controller functions
-const { findAllBooks, findBookById, createBook, updateBook } = require('../controllers/book.controller.js');
+const { findAllBooks, findBookById, createBook, updateBook, deleteBookById } = require('../controllers/book.controller.js');
 
 // Validate ObjectId middleware
 const validateObjectId = (req, res, next) => {
@@ -55,7 +55,14 @@ router.put('/:id', validateObjectId, async (req, res) => {
 });
 
 //Delete a Book
-
+router.delete('/:id', validateObjectId, async (req, res) => {
+    try {
+        await deleteBookById(req.params.id);
+        res.send(); // 200 OK is good
+    } catch (err) {
+        res.status(err?.status ?? 500).json(err);
+    }
+});
 
 //export router
 module.exports = router;

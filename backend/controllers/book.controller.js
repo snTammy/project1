@@ -40,5 +40,15 @@ const updateBook = async (id, bookToUpdate) => {
         throw { status: 400, msg: err };
     }
 };
+
+//Delete Book
+const deleteBookById = async (id) =>{
+    try{
+        await Books.findByIdAndDelete(id);
+    } catch (err) {
+        throw { status: 500, msg: err};
+    }
+};
+
 //export all our functions
-module.exports = {findAllBooks, findBookById, createBook, updateBook};
+module.exports = {findAllBooks, findBookById, createBook, updateBook, deleteBookById};
