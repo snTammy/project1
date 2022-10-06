@@ -7,7 +7,24 @@ app.use(express.json());//middleware used on our REST server, requests automatic
 // responses automatically will be converted to JSON
 
 // Routes
+const bookRouter = require('./routes/book.route.js');
+app.use('/books', bookRouter);
 
 // Connect to MongoDB
+const connectToMongoDB = async () =>{
+    try {
+        await mongoose.connect(process.env.MONGO_URI);
+        console.log("Successfully connected to MongoDB");
+    }catch (err){
+        console.log(err);
+        process.exit(1);
+    }
+}
 
-// have app listen to port
+connectToMongoDB();
+
+// have app listen to port specified in .env or default
+app.listen(process.env.PORT || 8080, () =>{
+    console.log(`Listening on port ${process.env.PORT || 8080}`);
+
+});
