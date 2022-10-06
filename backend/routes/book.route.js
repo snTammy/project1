@@ -3,7 +3,7 @@ const router = require('express').Router();
 const mongoose = require('mongoose');
 
 //import controller functions
-const { findAllBooks, findBookById } = require('../controllers/book.controller.js');
+const { findAllBooks, findBookById, createBook } = require('../controllers/book.controller.js');
 
 // Validate ObjectId middleware
 const validateObjectId = (req, res, next) => {
@@ -19,6 +19,7 @@ router.get('/', async (req, res) =>{
     const books = await findAllBooks();
     res.json(books);
 });
+
 //Get Book by Id
 router.get('/:id',validateObjectId, async (req, res) =>{
     //req.params.id extracts the id number from the URL
@@ -30,11 +31,23 @@ router.get('/:id',validateObjectId, async (req, res) =>{
         res.status(err?.status ?? 500).json(err);
     }
 });
+
 //Create new Book
+router.post('/', async (req, res) => {
+    try {
+        // For POST requests, we send the data through the request body
+        const book = await createBook(req.body);
+        res.status(201).json(book);
+    } catch (err) {
+        res.status(err?.status ?? 500).json(err);
+    }
+});
 
 //Update a Book
 
+
 //Delete a Book
+
 
 //export router
 module.exports = router;

@@ -1,5 +1,6 @@
 //All queries made here
 
+const Book = require('../models/Book.model.js');
 const Books = require('../models/Book.model.js'); //attach model
 
 //Find All Books
@@ -19,5 +20,16 @@ const findBookById = async (id) => {
         //Book not found
     }
 };
+
+//Create Book
+const createBook = async (bookToSave) => {
+    try{
+        const book = new Book(bookToSave);
+        await book.save();
+        return book;
+    } catch (err) {
+        throw err;
+    }
+};
 //export all our functions
-module.exports = {findAllBooks, findBookById};
+module.exports = {findAllBooks, findBookById, createBook};
