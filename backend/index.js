@@ -9,6 +9,7 @@ app.use(express.json());//middleware used on our REST server, requests automatic
 // Routes
 const bookRouter = require('./routes/book.route.js');
 app.use('/books', bookRouter);
+app.use('/warehouses', require('./routes/warehouse.route.js')); 
 
 // Connect to MongoDB
 const connectToMongoDB = async () =>{
