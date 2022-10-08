@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
-const Book = ({book: {title, author, description, coverUrl, numPgs, releaseDate}}) => {
+const Book = ({book: {title, author, description, coverUrl, numPgs, releaseDate,_id}}) => {
     return (
         <tr>
-            <td>{title}</td>
+            <td><Link to={`/books/${_id}`}>{title}</Link></td>
             
         </tr>
     );
