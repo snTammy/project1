@@ -5,13 +5,14 @@ import './App.css';
 
 export const App = () => {
   return (
-    <BrowserRouter>
+    <Home/>
+/*     <BrowserRouter>
     
     <Routes>
         <Route path="/" element={<Home />} />  
     </Routes>
     
-    </BrowserRouter>
+    </BrowserRouter> */
   );
 }
 
