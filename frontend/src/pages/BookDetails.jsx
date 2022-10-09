@@ -20,6 +20,16 @@ export const BookDetails = () => {
         <form>
             <label>Title</label>
             <input type='text' value={book.title}></input>
+            <label>Author</label>
+            <input type='text' value={book.author}></input>
+            <label>Description</label>
+            <input type='text' value={book.description}></input>
+            <label>Published</label>
+            <input type='text' value={book.releaseDate}></input>
+            <label>Cover</label>
+            <input type='text' value={book.coverUrl}></input>
+            <label>Pages</label>
+            <input type='text' value={book.numPgs}></input>
         </form>
     );
 }
