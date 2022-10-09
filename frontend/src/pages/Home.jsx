@@ -10,8 +10,9 @@ export const Home = () => {
    
     return (
         <>
+        <Link to="/books/new">Add a book</Link>
         <BookList/>
-        <BookForm/>
+        
         </>
     );
 }

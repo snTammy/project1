@@ -25,9 +25,10 @@ export const BookList = () => {
     return (
         <table>
             <thead>
-                <tr>
+                <tr className="row-item">
                     <th>Title</th> 
                     <th>Cover</th>
+                    <th></th>
                 </tr>  
             </thead>
             <tbody>
