@@ -26,7 +26,7 @@ export const BookForm = ({handleSubmit, book, setBook}) => {
             <div class="container">
             
                 <label htmlFor="book-name">Title</label>
-                <input class="form-control mb-2" type="text" id="book-name" 
+                <input required="true" class="form-control mb-2" type="text" id="book-name" 
                        placeholder="ex. Murder Mystery Book Title" 
                        value={book.title}
                        onChange={e =>setBook({...book, title: e.target.value})}
