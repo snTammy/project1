@@ -1,5 +1,5 @@
 //display and edit of book
-import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 import {useState } from "react";
 import { BookForm } from "../components/Form/BookForm";
@@ -7,7 +7,7 @@ import { BookForm } from "../components/Form/BookForm";
 
 export const BookNew = () => {
    
-
+    const navigate = useNavigate();
     const [book, setBook] = useState({});
     {/* axios.post*/}
    
@@ -25,7 +25,7 @@ export const BookNew = () => {
             console.log("NEW BOOK");
             console.log(res.data);
         {/* Redirect to BookList */}
-
+        navigate('/');
         } catch (err) {
             console.log(err);
         }

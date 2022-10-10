@@ -1,9 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Home, BookNew } from './pages';
 
-import './App.css';
+
 import { BookDetails } from './pages/BookDetails';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 export const App = () => {
   return (
